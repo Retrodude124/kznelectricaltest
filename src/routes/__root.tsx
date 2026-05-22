@@ -63,6 +63,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "KZN Electrical" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#1a1f2c" },
+      { property: "og:title", content: "KZN Electrical | Master Electricians in KwaZulu-Natal Since 1997" },
+      { name: "twitter:title", content: "KZN Electrical | Master Electricians in KwaZulu-Natal Since 1997" },
+      { property: "og:description", content: "Certified electrical contractors serving Durban, Umhlanga, Ballito and greater KwaZulu-Natal. Industrial, commercial, solar, generators and CoC inspections." },
+      { name: "twitter:description", content: "Certified electrical contractors serving Durban, Umhlanga, Ballito and greater KwaZulu-Natal. Industrial, commercial, solar, generators and CoC inspections." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/f8fc238a-e10f-4f96-a084-54c5627dba61" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/f8fc238a-e10f-4f96-a084-54c5627dba61" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
