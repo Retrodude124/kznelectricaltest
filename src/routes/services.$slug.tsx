@@ -1,13 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronDown, Phone } from "lucide-react";
-import { SERVICES, SITE } from "@/lib/site-data";
+import { SERVICES, SITE, type Service } from "@/lib/site-data";
 import { Reveal } from "@/components/site/Reveal";
 import { PageHero } from "@/components/site/PageHero";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Route = createFileRoute("/services/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { service: Service } => {
     const service = SERVICES.find((s) => s.slug === params.slug);
     if (!service) throw notFound();
     return { service };
