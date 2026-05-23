@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-border bg-surface mt-32">
       <div className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-1">
-          <img src={logo} alt="KZN Electrical" className="h-14 w-auto bg-white/95 rounded p-2" />
+          <img src={logo} alt="KZN Electrical" className="h-16 w-auto" />
           <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
             Powering KwaZulu-Natal with safe, certified electrical solutions since 1997.
           </p>
