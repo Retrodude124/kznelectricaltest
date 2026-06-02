@@ -4,6 +4,7 @@ import { SERVICES } from "@/lib/site-data";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { useForm } from "@formspree/react";
 
 export const Route = createFileRoute("/quote")({
   component: Quote,
@@ -23,11 +24,13 @@ const STEPS = ["Your details", "Service", "Project", "Review"];
 
 function Quote() {
   const [step, setStep] = useState(0);
-  const [done, setDone] = useState(false);
+  const [state, submitToFormspree] = useForm("xaqkrdgo");
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: SERVICES[0].slug, propertyType: "Residential", urgency: "Standard", details: "" });
 
   const next = () => setStep((s) => Math.min(s + 1, STEPS.length - 1));
   const back = () => setStep((s) => Math.max(s - 1, 0));
+  const submit = () => submitToFormspree({ ...form, _subject: `Quote request from ${form.name}` });
+  const done = state.succeeded;
 
   return (
     <>
@@ -115,8 +118,8 @@ function Quote() {
                 Continue <ArrowRight className="size-4" />
               </button>
             ) : (
-              <button onClick={() => setDone(true)} className="px-6 py-3 rounded-md bg-electric text-background font-semibold inline-flex items-center gap-2 hover:shadow-glow transition">
-                Submit quote request <Check className="size-4" />
+              <button onClick={submit} disabled={state.submitting} className="px-6 py-3 rounded-md bg-electric text-background font-semibold inline-flex items-center gap-2 hover:shadow-glow transition disabled:opacity-60">
+                {state.submitting ? "Sending…" : "Submit quote request"} <Check className="size-4" />
               </button>
             )}
           </div>
