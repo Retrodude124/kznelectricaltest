@@ -174,7 +174,7 @@ function Home() {
             <Reveal key={i} delay={i * 0.08}>
               <div>
                 <s.icon className="size-6 text-electric mb-4" />
-                <div className="text-5xl font-display font-bold text-gradient">
+                <div className="text-5xl font-display font-bold text-foreground">
                   <Counter to={s.n} suffix={s.suffix} />
                 </div>
                 <div className="mt-2 text-sm uppercase tracking-wider text-muted-foreground">{s.label}</div>
