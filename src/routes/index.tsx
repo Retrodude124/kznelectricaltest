@@ -3,9 +3,14 @@ import { motion } from "framer-motion";
 import { ArrowRight, Zap, Shield, Award, Clock, ChevronDown } from "lucide-react";
 import heroImg from "@/assets/hero-city.jpg";
 import fleetAsset from "@/assets/fleet-aerial.jpg.asset.json";
+import anniversaryVehicle from "@/assets/anniversary-vehicle.jpg.asset.json";
+import teamVehicles from "@/assets/team-vehicles.jpg.asset.json";
+import teamGazebo from "@/assets/team-gazebo.jpg.asset.json";
+import anniversaryBoard from "@/assets/anniversary-board.jpg.asset.json";
 import { SERVICES, PROJECTS, SITE } from "@/lib/site-data";
 import { Reveal, Stagger, itemVariants } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
+import { CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Home,
