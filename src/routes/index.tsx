@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Shield, Award, Clock, ChevronDown } from "lucide-react";
 import heroImg from "@/assets/hero-city.jpg";
+import fleetAsset from "@/assets/fleet-aerial.jpg.asset.json";
 import { SERVICES, PROJECTS, SITE } from "@/lib/site-data";
 import { Reveal, Stagger, itemVariants } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
@@ -107,6 +108,33 @@ function Home() {
             </motion.div>
           </motion.div>
         </div>
+      </section>
+
+      {/* FLEET BANNER */}
+      <section className="relative">
+        <Reveal>
+          <div className="relative h-[42vh] min-h-[340px] max-h-[560px] overflow-hidden border-y border-border">
+            <img
+              src={fleetAsset.url}
+              alt="Aerial view of the KwaZulu-Natal Electrical branded vehicle fleet and team"
+              loading="lazy"
+              className="absolute inset-0 size-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            <div className="relative max-w-7xl mx-auto px-6 h-full flex items-end pb-10">
+              <div className="max-w-xl">
+                <div className="text-xs uppercase tracking-[0.25em] text-electric font-medium mb-3">Our fleet</div>
+                <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight">
+                  A professional team. A large branded fleet. One trusted standard.
+                </h2>
+                <p className="mt-4 text-sm md:text-base text-muted-foreground">
+                  Fully-equipped vehicles and qualified electricians on the road across KwaZulu-Natal — every day, since 1997.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* TRUST MARQUEE */}
