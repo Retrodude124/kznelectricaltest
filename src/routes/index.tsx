@@ -142,6 +142,200 @@ function Home() {
         </Reveal>
       </section>
 
+      {/* SECTION — 25+ YEARS OF EXCELLENCE */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <Reveal>
+            <div className="text-xs uppercase tracking-[0.25em] text-electric font-medium mb-4">Trusted since 1997</div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-[1.05] tracking-tight">
+              Over 25 Years of <span className="text-electric">Electrical Excellence</span>
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              For more than two decades, KwaZulu Natal Electrical has delivered professional
+              electrical solutions across residential, commercial and industrial sectors throughout
+              KwaZulu-Natal.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Every installation is tested, certified and signed off by a registered Master
+              Installation Electrician — the same standard our founders set in 1997.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/about" className="px-5 py-3 rounded-md border border-border hover:border-electric/60 hover:bg-electric/5 text-sm font-semibold transition inline-flex items-center gap-2">
+                Our Story <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border"
+            >
+              <img
+                src={anniversaryVehicle.url}
+                alt="25 Years 1997–2022 anniversary emblem on a KwaZulu Natal Electrical company vehicle"
+                loading="lazy"
+                className="w-full aspect-[4/3] object-cover bg-white"
+              />
+              {/* Floating badges */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="absolute top-5 left-5 rounded-full px-4 py-2 bg-background/70 backdrop-blur-md border border-electric/30 shadow-glow"
+              >
+                <div className="text-[10px] uppercase tracking-[0.2em] text-electric font-semibold">Established 1997</div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.55 }}
+                className="absolute bottom-5 right-5 rounded-xl px-4 py-3 bg-background/80 backdrop-blur-md border border-electric/30 shadow-glow"
+              >
+                <div className="text-[10px] uppercase tracking-[0.2em] text-electric font-semibold">25+ Years</div>
+                <div className="text-xs text-foreground font-medium">of Experience</div>
+              </motion.div>
+            </motion.div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* SECTION — MEET OUR TEAM */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <Reveal>
+          <div className="max-w-3xl mb-12">
+            <div className="text-xs uppercase tracking-[0.25em] text-electric font-medium mb-3">Our people</div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight tracking-tight">
+              The People Behind KwaZulu Natal Electrical
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              Our company is built on experienced electricians, tight-knit teamwork and quality
+              workmanship — the kind of standard that only shows up on site when the people carrying
+              it care about the work.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.5 }}
+            className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border"
+          >
+            <img
+              src={teamVehicles.url}
+              alt="KwaZulu Natal Electrical team members in branded workwear standing beside a line of company bakkies"
+              loading="lazy"
+              className="w-full aspect-[16/8] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
+          </motion.div>
+        </Reveal>
+
+        <Stagger className="mt-8 grid sm:grid-cols-3 gap-4">
+          {[
+            { title: "Experienced Team", body: "Master Installation Electricians and long-serving crews." },
+            { title: "Qualified Electricians", body: "Every installation certified to the latest SANS standards." },
+            { title: "Customer Focused", body: "Clear communication from first quote to final sign-off." },
+          ].map((c) => (
+            <motion.div key={c.title} variants={itemVariants} className="p-6 rounded-2xl bg-surface border border-border hover:border-electric/40 hover:bg-surface-elevated transition">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="size-5 text-electric shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-semibold text-foreground">{c.title}</div>
+                  <div className="mt-1 text-sm text-muted-foreground leading-relaxed">{c.body}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </Stagger>
+      </section>
+
+      {/* SECTION — COMPANY CULTURE */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <Reveal delay={0.1} className="lg:order-2">
+            <div className="text-xs uppercase tracking-[0.25em] text-electric font-medium mb-4">Company culture</div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-[1.05] tracking-tight">
+              A Company Built on <span className="text-electric">Relationships</span>
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              We value teamwork, long-term customer relationships and dependable service. Many of
+              our clients have been with us for the better part of two decades — because the same
+              people who quoted the job are the ones who show up on site.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Investing in our team is investing in the standard our clients rely on.
+            </p>
+          </Reveal>
+
+          <Reveal className="lg:order-1">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border"
+            >
+              <img
+                src={teamGazebo.url}
+                alt="The full KwaZulu Natal Electrical team gathered under the branded 25 year anniversary gazebo"
+                loading="lazy"
+                className="w-full aspect-[4/3] object-cover"
+              />
+            </motion.div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* SECTION — CUSTOMER TRUST */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="relative rounded-[24px] overflow-hidden border border-electric/20 bg-gradient-to-br from-surface-elevated via-surface to-surface p-8 md:p-14">
+          <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
+          <div className="relative grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+            <Reveal className="lg:col-span-3">
+              <div className="text-xs uppercase tracking-[0.25em] text-electric font-medium mb-4">Customer trust</div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold leading-[1.05] tracking-tight">
+                Trusted by Customers for More Than <span className="text-electric">Two Decades</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Our 25-year anniversary celebration brought together customers, suppliers and
+                partners who signed a commemorative board with messages recognising our commitment
+                to quality service.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                It's more than a keepsake — it's a wall of proof of the long-standing relationships
+                that built this company.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.15} className="lg:col-span-2">
+              <motion.div
+                initial={{ rotate: -2 }}
+                whileHover={{ rotate: 0, scale: 1.03 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border bg-white"
+              >
+                <img
+                  src={anniversaryBoard.url}
+                  alt="Close-up of the KwaZulu Natal Electrical 25 year anniversary board signed by customers, suppliers and partners"
+                  loading="lazy"
+                  className="w-full aspect-[4/3] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="rounded-xl px-4 py-2.5 bg-background/80 backdrop-blur-md border border-electric/30 shadow-glow">
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-electric font-semibold">Signed by clients & partners</div>
+                    <div className="text-xs text-foreground font-medium">25 Year Anniversary · 1997–2022</div>
+                  </div>
+                </div>
+              </motion.div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* TRUST MARQUEE */}
       <section className="border-y border-border bg-surface/50 overflow-hidden">
         <div className="py-6">
