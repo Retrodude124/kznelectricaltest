@@ -470,7 +470,7 @@ function Home() {
             <div className="absolute inset-0 grain" />
             <div className="relative max-w-3xl">
               <h2 className="text-4xl md:text-6xl font-display font-bold leading-tight">
-                Ready to start <span className="text-gradient">your project?</span>
+                Ready to start <span className="text-electric">your project?</span>
               </h2>
               <p className="mt-6 text-lg text-muted-foreground">
                 Get a no-obligation quote from KwaZulu-Natal's most trusted electrical contractor.
