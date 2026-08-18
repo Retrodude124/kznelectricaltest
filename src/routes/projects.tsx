@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
-import { PROJECTS } from "@/lib/site-data";
+import { PROJECTS, COMPLETED_PROJECTS } from "@/lib/site-data";
+import { Reveal } from "@/components/site/Reveal";
+import logo from "@/assets/kzn-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useMemo } from "react";
 
