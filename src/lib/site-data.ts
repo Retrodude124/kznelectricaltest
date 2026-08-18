@@ -175,3 +175,35 @@ export const PROJECTS: Project[] = [
   { name: "Lupa Bakery", location: "Avoca", value: "R 1 200 000", year: 2020, sector: "Commercial" },
   { name: "Northside Ballito", location: "Ballito", value: "R 965 000", year: 2020, sector: "Residential" },
 ];
+
+export type CompletedProject = {
+  name: string;
+  location?: string;
+  value: string;
+  image?: string;
+};
+
+/** Completed projects archive (originally listed on kznelectrical.co.za/ProjectGallery). */
+export const COMPLETED_PROJECTS: CompletedProject[] = [
+  { name: "Bishops Court Office Park", value: "R 1 740 000.00" },
+  { name: "Briardene Minifactory Development", value: "R 3 000 000.00" },
+  { name: "Buffels Draai Landfill Site", value: "R 500 000.00" },
+  { name: "D & A Timbers New Warehouse", value: "R 800 000.00" },
+  { name: "DSW Toti Transfer Station Revamp", value: "R 180 000.00" },
+  { name: "Durban Country Club – Revamp", value: "R 5 000 000.00" },
+  { name: "Durban International Airport Carpark Lighting", value: "R 250 000.00" },
+  { name: "Elangeni Office Block", value: "R 850 000.00" },
+  { name: "Forest Creek Electrical and Telkom Reticulation", value: "R 280 000.00" },
+  { name: "GM Motor Dealership", value: "R 1 200 000.00" },
+  { name: "Hirsch", location: "KZN – Pietermaritzburg", value: "R 2 000 000.00" },
+  { name: "Izinga Ridge Gatehouses", value: "R 110 000.00" },
+  { name: "New Classroom Block – George Campbell High School", value: "R 27 000.00" },
+  { name: "Plantations ±150 Houses", value: "R 6 750 000.00" },
+  { name: "Sabex Office Blocks", value: "R 1 300 000.00" },
+  { name: "Thompsons Extension", value: "R 460 000.00" },
+  { name: "Thomsons Office Block", value: "R 1 500 000.00" },
+  { name: "Universal Printing Main Office Revamp", value: "R 200 000.00" },
+  { name: "Voltex Briardene", value: "R 800 000.00" },
+  { name: "Westbrooke Beach Club (Phase 1)", value: "R 900 000.00" },
+  { name: "Westville Girls", location: "KZN – Westville", value: "R 300 000.00" },
+];
