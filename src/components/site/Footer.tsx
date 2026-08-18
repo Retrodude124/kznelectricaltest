@@ -12,7 +12,7 @@ export function Footer() {
             alt="KZN Electrical"
             loading="lazy"
             decoding="async"
-            className="h-20 w-auto max-w-full object-contain object-center md:object-left opacity-90 [filter:drop-shadow(0_0_10px_rgba(120,180,255,0.10))] my-2"
+            className="h-28 w-auto max-w-full object-contain object-center md:object-left opacity-95 [filter:drop-shadow(0_0_12px_rgba(120,180,255,0.12))] my-2"
           />
           <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-xs">
             Powering KwaZulu-Natal with safe, certified electrical solutions since 1997.
