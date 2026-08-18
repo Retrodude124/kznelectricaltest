@@ -30,7 +30,13 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={logo} alt="KZN Electrical logo" className="h-12 w-auto transition group-hover:scale-105" />
+            <img
+              src={logo}
+              alt="KZN Electrical logo"
+              decoding="async"
+              className="h-11 w-auto object-contain object-center shrink-0 transition group-hover:scale-105"
+            />
+
             <div className="hidden sm:block leading-tight">
               <div className="text-xs uppercase tracking-[0.2em] text-electric font-medium">Est. 1997</div>
               <div className="text-sm font-semibold">KwaZulu-Natal Electrical</div>

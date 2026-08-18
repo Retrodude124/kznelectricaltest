@@ -6,12 +6,19 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-surface mt-32">
       <div className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
-        <div className="md:col-span-1">
-          <img src={logo} alt="KZN Electrical" className="h-16 w-auto" />
-          <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+        <div className="md:col-span-1 flex flex-col items-center text-center md:items-start md:text-left">
+          <img
+            src={logo}
+            alt="KZN Electrical"
+            loading="lazy"
+            decoding="async"
+            className="h-20 w-auto max-w-full object-contain object-center md:object-left opacity-90 [filter:drop-shadow(0_0_10px_rgba(120,180,255,0.10))] my-2"
+          />
+          <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-xs">
             Powering KwaZulu-Natal with safe, certified electrical solutions since 1997.
           </p>
         </div>
+
 
         <div>
           <h4 className="text-xs uppercase tracking-[0.2em] text-electric font-semibold mb-4">Services</h4>
