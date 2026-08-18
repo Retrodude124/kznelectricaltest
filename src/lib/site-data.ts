@@ -183,6 +183,39 @@ export type CompletedProject = {
   image?: string;
 };
 
+/** Portfolio categories used by the Projects filter. */
+export type ProjectCategory = "Domestic" | "Commercial" | "Industrial" | "Generators" | "Other";
+
+export type PortfolioProject = {
+  slug: string;
+  name: string;
+  category: ProjectCategory;
+  location?: string;
+  value?: string;
+  year?: number;
+  description: string;
+  /** Genuine KZN Electrical photographs for this project. Empty until real photos are supplied. */
+  photos: string[];
+};
+
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/**
+ * Photograph registry. Add genuine KZN Electrical project photographs here,
+ * keyed by project slug, e.g. { "durban-country-club-revamp": [img1, img2] }.
+ * No stock or AI imagery — cards fall back to the KZN emblem until real photos exist.
+ */
+export const PROJECT_PHOTOS: Record<string, string[]> = {};
+
+const CATEGORY_FROM_SECTOR: Record<Project["sector"], ProjectCategory> = {
+  Residential: "Domestic",
+  Commercial: "Commercial",
+  Industrial: "Industrial",
+};
+
+
+
 /** Completed projects archive (originally listed on kznelectrical.co.za/ProjectGallery). */
 export const COMPLETED_PROJECTS: CompletedProject[] = [
   { name: "Bishops Court Office Park", value: "R 1 740 000.00" },
