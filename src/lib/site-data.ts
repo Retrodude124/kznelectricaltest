@@ -240,3 +240,32 @@ export const COMPLETED_PROJECTS: CompletedProject[] = [
   { name: "Westbrooke Beach Club (Phase 1)", value: "R 900 000.00" },
   { name: "Westville Girls", location: "KZN – Westville", value: "R 300 000.00" },
 ];
+
+/** Unified portfolio used by /projects — recent contracts plus the completed archive. */
+export const PORTFOLIO: PortfolioProject[] = [
+  ...PROJECTS.map((p) => {
+    const slug = slugify(p.name);
+    return {
+      slug,
+      name: p.name,
+      category: CATEGORY_FROM_SECTOR[p.sector],
+      location: p.location,
+      value: p.value,
+      year: p.year,
+      description: `${p.sector} electrical installation contract delivered in ${p.location}, KwaZulu-Natal.`,
+      photos: PROJECT_PHOTOS[slug] ?? [],
+    } satisfies PortfolioProject;
+  }),
+  ...COMPLETED_PROJECTS.map((p) => {
+    const slug = slugify(p.name);
+    return {
+      slug,
+      name: p.name,
+      category: "Other" as ProjectCategory,
+      location: p.location,
+      value: p.value,
+      description: "Completed electrical contract delivered by KwaZulu-Natal Electrical.",
+      photos: PROJECT_PHOTOS[slug] ?? [],
+    } satisfies PortfolioProject;
+  }),
+];
