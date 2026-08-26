@@ -7,10 +7,10 @@ import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg.asset.json";
 import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg.asset.json";
 import hirschPlantRoom from "@/assets/hirsch-plant-room.jpg.asset.json";
 import westvilleGirls from "@/assets/westville-girls-enclosure.jpg.asset.json";
-import elaleni7 from "@/assets/elaleni-7.png.asset.json";
-import elaleni8 from "@/assets/elaleni-8.png.asset.json";
-import elaleni9 from "@/assets/elaleni-9.png.asset.json";
-import elaleni10 from "@/assets/elaleni-10.png.asset.json";
+import elaleni1 from "@/assets/elaleni-new-1.jpg.asset.json";
+import elaleni2 from "@/assets/elaleni-new-2.jpg.asset.json";
+import elaleni3 from "@/assets/elaleni-new-3.jpg.asset.json";
+import elaleni4 from "@/assets/elaleni-new-4.jpg.asset.json";
 import lupa14 from "@/assets/lupa-14.png.asset.json";
 import lupa11 from "@/assets/lupa-11.png.asset.json";
 import lupa13 from "@/assets/lupa-13.png.asset.json";
@@ -278,7 +278,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "clover-queensburgh": [clover53.url, clover47.url, clover57.url],
   "hirsch": [hirschPlantRoom.url],
   "westville-girls": [westvilleGirls.url],
-  "elaleni-forrest-view": [elaleni10.url, elaleni7.url, elaleni8.url, elaleni9.url],
+  "elaleni-forrest-view": [elaleni1.url, elaleni2.url, elaleni3.url, elaleni4.url],
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
