@@ -1,3 +1,8 @@
+import ashton2 from "@/assets/ashton-sports-hall-2.jpg.asset.json";
+import ashton8 from "@/assets/ashton-sports-hall-8.jpg.asset.json";
+import ashton13 from "@/assets/ashton-sports-hall-13.jpg.asset.json";
+import ashton15 from "@/assets/ashton-sports-hall-15.jpg.asset.json";
+
 export const SITE = {
   name: "KZN Electrical",
   fullName: "KwaZulu-Natal Electrical",
@@ -206,7 +211,14 @@ const slugify = (s: string) =>
  * keyed by project slug, e.g. { "durban-country-club-revamp": [img1, img2] }.
  * No stock or AI imagery — cards fall back to the KZN emblem until real photos exist.
  */
-export const PROJECT_PHOTOS: Record<string, string[]> = {};
+export const PROJECT_PHOTOS: Record<string, string[]> = {
+  "ashton-new-sports-hall": [
+    ashton2.url,
+    ashton13.url,
+    ashton8.url,
+    ashton15.url,
+  ],
+};
 
 const CATEGORY_FROM_SECTOR: Record<Project["sector"], ProjectCategory> = {
   Residential: "Domestic",
@@ -243,6 +255,16 @@ export const COMPLETED_PROJECTS: CompletedProject[] = [
 
 /** Unified portfolio used by /projects — recent contracts plus the completed archive. */
 export const PORTFOLIO: PortfolioProject[] = [
+  {
+    slug: "ashton-new-sports-hall",
+    name: "Ashton New Sports Hall",
+    category: "Commercial",
+    location: "Ballito",
+    year: 2024,
+    description:
+      "Complete electrical installation for the new sports hall at Ashton International College, Ballito — feature cove and downlighting to the main hall, DMX-controlled hall lighting with dedicated switching and dimmer panel, distribution boards, stairwell step lighting and full power reticulation. Completed 2024.",
+    photos: PROJECT_PHOTOS["ashton-new-sports-hall"] ?? [],
+  },
   ...PROJECTS.map((p) => {
     const slug = slugify(p.name);
     return {
