@@ -275,16 +275,47 @@ export const COMPLETED_PROJECTS: CompletedProject[] = [
   { name: "Westville Girls", location: "KZN – Westville", value: "R 300 000.00" },
 ];
 
+/**
+ * Recently completed projects, as listed on the original
+ * kznelectrical.co.za/ProjectGallery "Recently Completed Projects" page.
+ * Photographs are added to PROJECT_PHOTOS by slug as they become available.
+ */
+const RECENTLY_COMPLETED: Array<{
+  name: string;
+  category: ProjectCategory;
+  location?: string;
+  value: string;
+  year: number;
+  description?: string;
+}> = [
+  { name: "Ballito Lifestyle Centre Re-Development", category: "Commercial", location: "KZN – Durban", value: "R 10 000 000.00", year: 2018, description: "Full electrical re-development of the Ballito Lifestyle Centre — retail distribution, feature and architectural lighting, tenant metering and common-area reticulation." },
+  { name: "Cambridge Warwick", category: "Commercial", location: "Durban", value: "R 5 700 000.00", year: 2019, description: "Electrical installation for the Cambridge Food store in Warwick, Durban — LV distribution, refrigeration power, lighting and shopfloor reticulation." },
+  { name: "Durban Point Promenade", category: "Commercial", location: "Durban", value: "R 7 800 000.00", year: 2019, description: "Public realm electrical works along the Durban Point Promenade — street and amenity lighting, feeder reticulation and distribution kiosks." },
+  { name: "Eden Garden Private Hospital", category: "Commercial", location: "KZN – Durban", value: "R 21 400 000.00", year: 2018, description: "Complete hospital electrical installation — essential and non-essential distribution, generator changeover, theatre isolated power, nurse-call containment and full lighting." },
+  { name: "Glass House Revamp", category: "Commercial", location: "Umhlanga", value: "R 2 640 000.00", year: 2019, description: "Electrical revamp of the Glass House offices in Umhlanga — new distribution boards, LED lighting throughout, small power and data containment." },
+  { name: "Kwadukuza Private Hospital", category: "Commercial", location: "KZN – Durban", value: "R 8 400 000.00", year: 2017, description: "Hospital electrical installation at Kwadukuza — essential supply distribution, generator backup, ward and theatre lighting, and external site lighting." },
+  { name: "LG Cornubia", category: "Industrial", location: "Cornubia", value: "R 12 875 000.00", year: 2020, description: "Industrial electrical installation for the LG facility in Cornubia — MV/LV distribution, high-bay warehouse lighting, plant power and external reticulation." },
+  { name: "Life The Crompton Hospital", category: "Commercial", location: "KZN – Durban", value: "R 1 000 000.00", year: 2017, description: "Electrical works at Life The Crompton Hospital — ward and corridor lighting upgrades, distribution board work and essential power reticulation." },
+  { name: "Massbuild – Builders Trade Depot", category: "Commercial", location: "KZN – Durban", value: "R 6 500 000.00", year: 2017, description: "Full electrical installation for the Builders Trade Depot — yard and warehouse high-bay lighting, trade counter power, LV distribution and site reticulation." },
+  { name: "Netcare St Augustine's Hospital", category: "Commercial", location: "KZN – Durban", value: "R 2 000 000.00", year: 2017, description: "Electrical installation and upgrades at Netcare St Augustine's Hospital — ward lighting, bedhead services power, and essential supply distribution." },
+  { name: "Pick & Pay Arbour Crossing", category: "Commercial", location: "Amanzimtoti", value: "R 2 050 000.00", year: 2020, description: "Retail electrical installation at Pick n Pay Arbour Crossing — refrigeration power, LED shopfloor lighting and distribution boards." },
+  { name: "Pick & Pay Midway Mall", category: "Commercial", location: "Durban", value: "R 5 430 000.00", year: 2020, description: "Retail electrical installation at Pick n Pay Midway Mall — LV distribution, refrigeration and plant power, and full shopfloor lighting." },
+  { name: "Pick n Pay Christian Village Hillcrest", category: "Commercial", location: "Hillcrest", value: "R 2 900 000.00", year: 2016, description: "Retail store electrical installation at Christian Village, Hillcrest — refrigeration power, shopfloor and back-of-house lighting, and distribution." },
+  { name: "Verigreen Office Building", category: "Commercial", location: "Pinetown", value: "R 2 050 000.00", year: 2019, description: "Office building electrical installation in Pinetown — distribution boards, LED office lighting, small power, and data containment." },
+  { name: "Zululami Moyana Units", category: "Domestic", location: "Sheffield Beach", value: "R 950 000.00", year: 2020, description: "Residential electrical installation for the Moyana units at Zululami Luxury Coastal Estate — unit reticulation, distribution boards and lighting." },
+];
+
 /** Unified portfolio used by /projects — recent contracts plus the completed archive. */
 export const PORTFOLIO: PortfolioProject[] = [
   {
     slug: "ashton-new-sports-hall",
-    name: "Ashton New Sports Hall",
+    name: "Ashton Sports Hall",
     category: "Commercial",
     location: "Ballito",
-    year: 2024,
+    value: "R 1 020 000.00",
+    year: 2019,
     description:
-      "Complete electrical installation for the new sports hall at Ashton International College, Ballito — feature cove and downlighting to the main hall, DMX-controlled hall lighting with dedicated switching and dimmer panel, distribution boards, stairwell step lighting and full power reticulation. Completed 2024.",
+      "Complete electrical installation for the sports hall at Ashton International College, Ballito — feature cove and downlighting to the main hall, DMX-controlled hall lighting with dedicated switching and dimmer panel, distribution boards, stairwell step lighting and full power reticulation.",
     photos: PROJECT_PHOTOS["ashton-new-sports-hall"] ?? [],
   },
   {
@@ -297,6 +328,22 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Industrial electrical installation at the Clover dairy plant in Queensburgh — LV switchgear and distribution panels, cable tray and containment reticulation, process area power and high-bay lighting throughout the production and packing halls. Completed 2022.",
     photos: PROJECT_PHOTOS["clover-queensburgh"] ?? [],
   },
+  ...RECENTLY_COMPLETED.map((p) => {
+    const slug = slugify(p.name);
+    return {
+      slug,
+      name: p.name,
+      category: p.category,
+      location: p.location,
+      value: p.value,
+      year: p.year,
+      description:
+        p.description ??
+        `Electrical installation contract completed in ${p.location ?? "KwaZulu-Natal"} in ${p.year}.`,
+      photos: PROJECT_PHOTOS[slug] ?? [],
+    } satisfies PortfolioProject;
+  }),
+
 
   ...PROJECTS.map((p) => {
     const slug = slugify(p.name);
