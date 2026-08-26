@@ -11,10 +11,10 @@ import elaleni1 from "@/assets/elaleni-new-1.jpg.asset.json";
 import elaleni2 from "@/assets/elaleni-new-2.jpg.asset.json";
 import elaleni3 from "@/assets/elaleni-new-3.jpg.asset.json";
 import elaleni4 from "@/assets/elaleni-new-4.jpg.asset.json";
-import lupa14 from "@/assets/lupa-14.png.asset.json";
-import lupa11 from "@/assets/lupa-11.png.asset.json";
-import lupa13 from "@/assets/lupa-13.png.asset.json";
-import lupa12 from "@/assets/lupa-12.png.asset.json";
+import lupa1 from "@/assets/lupa-new-1.jpg.asset.json";
+import lupa2 from "@/assets/lupa-new-2.jpg.asset.json";
+import lupa3 from "@/assets/lupa-new-3.jpg.asset.json";
+import lupa4 from "@/assets/lupa-new-4.jpg.asset.json";
 import lgCornubia1 from "@/assets/lg-cornubia-1.jpg.asset.json";
 import lgCornubia2 from "@/assets/lg-cornubia-2.jpg.asset.json";
 import eden2 from "@/assets/eden-2.jpg.asset.json";
@@ -279,7 +279,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "hirsch": [hirschPlantRoom.url],
   "westville-girls": [westvilleGirls.url],
   "elaleni-forrest-view": [elaleni1.url, elaleni2.url, elaleni3.url, elaleni4.url],
-  "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
+  "lupa-bakery": [lupa2.url, lupa1.url, lupa3.url, lupa4.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
   "pick-n-pay-christian-village-hillcrest": [pnpHill4.url, pnpHill5.url, pnpHill3.url, pnpHill1.url, pnpHill2.url],
