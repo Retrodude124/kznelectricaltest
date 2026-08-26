@@ -265,6 +265,17 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Complete electrical installation for the new sports hall at Ashton International College, Ballito — feature cove and downlighting to the main hall, DMX-controlled hall lighting with dedicated switching and dimmer panel, distribution boards, stairwell step lighting and full power reticulation. Completed 2024.",
     photos: PROJECT_PHOTOS["ashton-new-sports-hall"] ?? [],
   },
+  {
+    slug: "clover-queensburgh",
+    name: "Clover Queensburgh",
+    category: "Industrial",
+    location: "Queensburgh",
+    year: 2022,
+    description:
+      "Industrial electrical installation at the Clover dairy plant in Queensburgh — LV switchgear and distribution panels, cable tray and containment reticulation, process area power and high-bay lighting throughout the production and packing halls. Completed 2022.",
+    photos: PROJECT_PHOTOS["clover-queensburgh"] ?? [],
+  },
+
   ...PROJECTS.map((p) => {
     const slug = slugify(p.name);
     return {
