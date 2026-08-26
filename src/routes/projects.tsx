@@ -4,8 +4,8 @@ import { PORTFOLIO, type PortfolioProject, type ProjectCategory } from "@/lib/si
 import { Reveal } from "@/components/site/Reveal";
 import logo from "@/assets/kzn-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
-import { X, MapPin, ArrowRight } from "lucide-react";
+import { useEffect, useMemo, useState, useCallback } from "react";
+import { X, MapPin, ArrowRight, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
 const ORDER: ProjectCategory[] = ["Domestic", "Commercial", "Industrial", "Generators", "Other"];
 
@@ -133,16 +133,40 @@ function Projects() {
 }
 
 function ProjectModal({ project, onClose }: { project: PortfolioProject | null; onClose: () => void }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = useCallback((index: number) => setLightboxIndex(index), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const goNext = useCallback(() => {
+    if (!project || lightboxIndex === null) return;
+    setLightboxIndex((prev) => (prev === null ? 0 : (prev + 1) % project.photos.length));
+  }, [project, lightboxIndex]);
+  const goPrev = useCallback(() => {
+    if (!project || lightboxIndex === null) return;
+    setLightboxIndex((prev) => (prev === null ? 0 : (prev - 1 + project.photos.length) % project.photos.length));
+  }, [project, lightboxIndex]);
+
   useEffect(() => {
-    if (!project) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    if (!project) {
+      setLightboxIndex(null);
+      return;
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (lightboxIndex !== null) closeLightbox();
+        else onClose();
+      } else if (lightboxIndex !== null) {
+        if (e.key === "ArrowRight") goNext();
+        else if (e.key === "ArrowLeft") goPrev();
+      }
+    };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [project, onClose]);
+  }, [project, onClose, lightboxIndex, closeLightbox, goNext, goPrev]);
 
   return (
     <AnimatePresence>
@@ -165,7 +189,10 @@ function ProjectModal({ project, onClose }: { project: PortfolioProject | null; 
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="my-auto w-full max-w-3xl overflow-hidden rounded-[18px] border border-border bg-surface-elevated"
           >
-            <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-electric/10 via-transparent to-transparent">
+            <div
+              className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-electric/10 via-transparent to-transparent cursor-zoom-in"
+              onDoubleClick={() => project.photos[0] && openLightbox(0)}
+            >
               {project.photos[0] ? (
                 <img
                   src={project.photos[0]}
@@ -177,6 +204,13 @@ function ProjectModal({ project, onClose }: { project: PortfolioProject | null; 
                   <img src={logo} alt="KZN Electrical" className="h-28 w-auto object-contain opacity-30" />
                 </div>
               )}
+              {project.photos[0] ? (
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition hover:opacity-100">
+                  <span className="rounded-full border border-border bg-background/70 px-3 py-1.5 text-xs uppercase tracking-wider text-foreground backdrop-blur">
+                    Double-click to full-screen
+                  </span>
+                </div>
+              ) : null}
               <button
                 onClick={onClose}
                 aria-label="Close project"
@@ -214,20 +248,117 @@ function ProjectModal({ project, onClose }: { project: PortfolioProject | null; 
               {project.photos.length > 1 ? (
                 <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
                   {project.photos.slice(1).map((src, i) => (
-                    <img
+                    <div
                       key={src}
-                      src={src}
-                      alt={`${project.name} photograph ${i + 2}`}
-                      loading="lazy"
-                      className="aspect-[4/3] w-full rounded-[14px] object-cover"
-                    />
+                      className="group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-[14px]"
+                      onDoubleClick={() => openLightbox(i + 1)}
+                    >
+                      <img
+                        src={src}
+                        alt={`${project.name} photograph ${i + 2}`}
+                        loading="lazy"
+                        className="size-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-background/40 opacity-0 transition group-hover:opacity-100">
+                        <Maximize2 className="size-5 text-foreground" />
+                      </div>
+                    </div>
                   ))}
                 </div>
               ) : null}
             </div>
           </motion.div>
+
+          <Lightbox
+            photos={project.photos}
+            projectName={project.name}
+            index={lightboxIndex}
+            onClose={closeLightbox}
+            onNext={goNext}
+            onPrev={goPrev}
+          />
         </motion.div>
       ) : null}
     </AnimatePresence>
   );
 }
+
+function Lightbox({
+  photos,
+  projectName,
+  index,
+  onClose,
+  onNext,
+  onPrev,
+}: {
+  photos: string[];
+  projectName: string;
+  index: number | null;
+  onClose: () => void;
+  onNext: () => void;
+  onPrev: () => void;
+}) {
+  if (index === null || !photos[index]) return null;
+  const current = index + 1;
+  const total = photos.length;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        key="lightbox"
+        className="fixed inset-0 z-[90] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close full-screen image"
+          className="absolute right-5 top-5 z-[100] rounded-full border border-white/10 bg-white/10 p-2.5 text-white backdrop-blur transition hover:bg-white/20"
+        >
+          <X className="size-5" />
+        </button>
+
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          aria-label="Previous image"
+          className="absolute left-4 top-1/2 z-[100] -translate-y-1/2 rounded-full border border-white/10 bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 disabled:opacity-30 sm:left-6"
+          disabled={total <= 1}
+        >
+          <ChevronLeft className="size-6" />
+        </button>
+
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          aria-label="Next image"
+          className="absolute right-4 top-1/2 z-[100] -translate-y-1/2 rounded-full border border-white/10 bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 disabled:opacity-30 sm:right-6"
+          disabled={total <= 1}
+        >
+          <ChevronRight className="size-6" />
+        </button>
+
+        <div className="absolute bottom-6 left-1/2 z-[100] -translate-x-1/2 rounded-full border border-white/10 bg-white/10 px-4 py-1.5 text-xs text-white backdrop-blur">
+          {current} / {total}
+        </div>
+
+        <motion.div
+          key={photos[index]}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.25 }}
+          className="mx-auto max-h-screen max-w-screen max-w-[calc(100vw-7rem)] px-4"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={photos[index]}
+            alt={`${projectName} full-screen photograph ${current} of ${total}`}
+            className="max-h-[85vh] w-auto rounded-lg object-contain shadow-2xl"
+          />
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
