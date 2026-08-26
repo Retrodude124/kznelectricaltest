@@ -278,7 +278,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "clover-queensburgh": [clover53.url, clover47.url, clover57.url],
   "hirsch": [hirschPlantRoom.url],
   "westville-girls": [westvilleGirls.url],
-  "elaleni-forrest-view": [elaleni10.url, elaleni7.url, elaleni8.url, elaleni9.url],
+  "elaleni-forrest-view": [elaleni1.url, elaleni2.url, elaleni3.url, elaleni4.url],
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
