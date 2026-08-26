@@ -21,6 +21,11 @@ import eden2 from "@/assets/eden-2.jpg.asset.json";
 import eden3 from "@/assets/eden-3.jpg.asset.json";
 import eden4 from "@/assets/eden-4.jpg.asset.json";
 import eden5 from "@/assets/eden-5.jpg.asset.json";
+import kwadukuza1 from "@/assets/kwadukuza-1.jpg.asset.json";
+import kwadukuza2 from "@/assets/kwadukuza-2.jpg.asset.json";
+import kwadukuza3 from "@/assets/kwadukuza-3.jpg.asset.json";
+import kwadukuza4 from "@/assets/kwadukuza-4.jpg.asset.json";
+import kwadukuza5 from "@/assets/kwadukuza-5.jpg.asset.json";
 
 
 
@@ -246,6 +251,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
+  "kwadukuza-private-hospital": [kwadukuza1.url, kwadukuza3.url, kwadukuza2.url, kwadukuza5.url, kwadukuza4.url],
 };
 
 
