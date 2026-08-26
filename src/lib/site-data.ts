@@ -7,6 +7,10 @@ import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg.asset.json";
 import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg.asset.json";
 import hirschPlantRoom from "@/assets/hirsch-plant-room.jpg.asset.json";
 import westvilleGirls from "@/assets/westville-girls-enclosure.jpg.asset.json";
+import elaleni7 from "@/assets/elaleni-7.png.asset.json";
+import elaleni8 from "@/assets/elaleni-8.png.asset.json";
+import elaleni9 from "@/assets/elaleni-9.png.asset.json";
+import elaleni10 from "@/assets/elaleni-10.png.asset.json";
 
 
 
