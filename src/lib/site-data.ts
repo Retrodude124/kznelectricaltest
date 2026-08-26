@@ -36,6 +36,12 @@ import ballito3 from "@/assets/ballito-3.jpg.asset.json";
 import ballito4 from "@/assets/ballito-4.jpg.asset.json";
 import ballito5 from "@/assets/ballito-5.jpg.asset.json";
 import ballito6 from "@/assets/ballito-6.jpg.asset.json";
+import promenade1 from "@/assets/promenade-1.jpg.asset.json";
+import promenade2 from "@/assets/promenade-2.jpg.asset.json";
+import promenade3 from "@/assets/promenade-3.jpg.asset.json";
+import promenade4 from "@/assets/promenade-4.jpg.asset.json";
+import promenade5 from "@/assets/promenade-5.jpg.asset.json";
+import promenade6 from "@/assets/promenade-6.jpg.asset.json";
 
 
 
@@ -261,6 +267,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
+  "durban-point-promenade": [promenade5.url, promenade6.url, promenade1.url, promenade2.url, promenade3.url, promenade4.url],
   "ballito-lifestyle-centre-re-development": [ballito2.url, ballito3.url, ballito1.url, ballito4.url, ballito6.url, ballito5.url],
   "life-the-crompton-hospital": [crompton4.url, crompton3.url, crompton1.url, crompton2.url],
   "kwadukuza-private-hospital": [kwadukuza1.url, kwadukuza3.url, kwadukuza2.url, kwadukuza5.url, kwadukuza4.url],
