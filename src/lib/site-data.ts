@@ -49,6 +49,11 @@ import netcare4 from "@/assets/netcare-4.jpg.asset.json";
 import netcare5 from "@/assets/netcare-5.jpg.asset.json";
 import netcare6 from "@/assets/netcare-6.jpg.asset.json";
 import netcare7 from "@/assets/netcare-7.jpg.asset.json";
+import pnpHill1 from "@/assets/pnp-hillcrest-1.jpg.asset.json";
+import pnpHill2 from "@/assets/pnp-hillcrest-2.jpg.asset.json";
+import pnpHill3 from "@/assets/pnp-hillcrest-3.jpg.asset.json";
+import pnpHill4 from "@/assets/pnp-hillcrest-4.jpg.asset.json";
+import pnpHill5 from "@/assets/pnp-hillcrest-5.jpg.asset.json";
 
 
 
@@ -274,6 +279,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
+  "pick-n-pay-christian-village-hillcrest": [pnpHill4.url, pnpHill5.url, pnpHill3.url, pnpHill1.url, pnpHill2.url],
   "netcare-st-augustine-s-hospital": [netcare6.url, netcare3.url, netcare1.url, netcare7.url, netcare2.url, netcare4.url, netcare5.url],
   "durban-point-promenade": [promenade5.url, promenade6.url, promenade1.url, promenade2.url, promenade3.url, promenade4.url],
   "ballito-lifestyle-centre-re-development": [ballito2.url, ballito3.url, ballito1.url, ballito4.url, ballito6.url, ballito5.url],
