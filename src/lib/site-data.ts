@@ -2,6 +2,9 @@ import ashton2 from "@/assets/ashton-sports-hall-2.jpg.asset.json";
 import ashton8 from "@/assets/ashton-sports-hall-8.jpg.asset.json";
 import ashton13 from "@/assets/ashton-sports-hall-13.jpg.asset.json";
 import ashton15 from "@/assets/ashton-sports-hall-15.jpg.asset.json";
+import clover47 from "@/assets/clover-IMG-20220228-WA0047.jpg.asset.json";
+import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg.asset.json";
+import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg.asset.json";
 
 export const SITE = {
   name: "KZN Electrical",
@@ -218,6 +221,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
     ashton8.url,
     ashton15.url,
   ],
+  "clover-queensburgh": [clover53.url, clover47.url, clover57.url],
 };
 
 const CATEGORY_FROM_SECTOR: Record<Project["sector"], ProjectCategory> = {
@@ -265,6 +269,17 @@ export const PORTFOLIO: PortfolioProject[] = [
       "Complete electrical installation for the new sports hall at Ashton International College, Ballito — feature cove and downlighting to the main hall, DMX-controlled hall lighting with dedicated switching and dimmer panel, distribution boards, stairwell step lighting and full power reticulation. Completed 2024.",
     photos: PROJECT_PHOTOS["ashton-new-sports-hall"] ?? [],
   },
+  {
+    slug: "clover-queensburgh",
+    name: "Clover Queensburgh",
+    category: "Industrial",
+    location: "Queensburgh",
+    year: 2022,
+    description:
+      "Industrial electrical installation at the Clover dairy plant in Queensburgh — LV switchgear and distribution panels, cable tray and containment reticulation, process area power and high-bay lighting throughout the production and packing halls. Completed 2022.",
+    photos: PROJECT_PHOTOS["clover-queensburgh"] ?? [],
+  },
+
   ...PROJECTS.map((p) => {
     const slug = slugify(p.name);
     return {
