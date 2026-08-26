@@ -2,6 +2,9 @@ import ashton2 from "@/assets/ashton-sports-hall-2.jpg.asset.json";
 import ashton8 from "@/assets/ashton-sports-hall-8.jpg.asset.json";
 import ashton13 from "@/assets/ashton-sports-hall-13.jpg.asset.json";
 import ashton15 from "@/assets/ashton-sports-hall-15.jpg.asset.json";
+import clover47 from "@/assets/clover-IMG-20220228-WA0047.jpg.asset.json";
+import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg.asset.json";
+import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg.asset.json";
 
 export const SITE = {
   name: "KZN Electrical",
