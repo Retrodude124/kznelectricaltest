@@ -54,6 +54,9 @@ import pnpHill2 from "@/assets/pnp-hillcrest-2.jpg.asset.json";
 import pnpHill3 from "@/assets/pnp-hillcrest-3.jpg.asset.json";
 import pnpHill4 from "@/assets/pnp-hillcrest-4.jpg.asset.json";
 import pnpHill5 from "@/assets/pnp-hillcrest-5.jpg.asset.json";
+import massbuild1 from "@/assets/massbuild-builders-trade-depot-1.jpg.asset.json";
+import massbuild2 from "@/assets/massbuild-builders-trade-depot-2.jpg.asset.json";
+
 
 
 
@@ -285,7 +288,8 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "ballito-lifestyle-centre-re-development": [ballito2.url, ballito3.url, ballito1.url, ballito4.url, ballito6.url, ballito5.url],
   "life-the-crompton-hospital": [crompton4.url, crompton3.url, crompton1.url, crompton2.url],
   "kwadukuza-private-hospital": [kwadukuza1.url, kwadukuza3.url, kwadukuza2.url, kwadukuza5.url, kwadukuza4.url],
-};
+  "massbuild-builders-trade-depot": [massbuild1.url, massbuild2.url],
+},
 
 
 
