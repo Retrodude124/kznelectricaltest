@@ -206,7 +206,14 @@ const slugify = (s: string) =>
  * keyed by project slug, e.g. { "durban-country-club-revamp": [img1, img2] }.
  * No stock or AI imagery — cards fall back to the KZN emblem until real photos exist.
  */
-export const PROJECT_PHOTOS: Record<string, string[]> = {};
+export const PROJECT_PHOTOS: Record<string, string[]> = {
+  "ashton-new-sports-hall": [
+    ashton2.url,
+    ashton13.url,
+    ashton8.url,
+    ashton15.url,
+  ],
+};
 
 const CATEGORY_FROM_SECTOR: Record<Project["sector"], ProjectCategory> = {
   Residential: "Domestic",
