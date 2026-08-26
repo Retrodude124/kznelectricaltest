@@ -26,6 +26,10 @@ import kwadukuza2 from "@/assets/kwadukuza-2.jpg.asset.json";
 import kwadukuza3 from "@/assets/kwadukuza-3.jpg.asset.json";
 import kwadukuza4 from "@/assets/kwadukuza-4.jpg.asset.json";
 import kwadukuza5 from "@/assets/kwadukuza-5.jpg.asset.json";
+import crompton1 from "@/assets/crompton-1.jpg.asset.json";
+import crompton2 from "@/assets/crompton-2.jpg.asset.json";
+import crompton3 from "@/assets/crompton-3.jpg.asset.json";
+import crompton4 from "@/assets/crompton-4.jpg.asset.json";
 
 
 
@@ -251,6 +255,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
   "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
+  "life-the-crompton-hospital": [crompton4.url, crompton3.url, crompton1.url, crompton2.url],
   "kwadukuza-private-hospital": [kwadukuza1.url, kwadukuza3.url, kwadukuza2.url, kwadukuza5.url, kwadukuza4.url],
 };
 
