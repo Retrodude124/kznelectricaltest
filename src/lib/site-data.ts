@@ -289,7 +289,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "life-the-crompton-hospital": [crompton4.url, crompton3.url, crompton1.url, crompton2.url],
   "kwadukuza-private-hospital": [kwadukuza1.url, kwadukuza3.url, kwadukuza2.url, kwadukuza5.url, kwadukuza4.url],
   "massbuild-builders-trade-depot": [massbuild1.url, massbuild2.url],
-},
+};
 
 
 
