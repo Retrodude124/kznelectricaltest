@@ -5,6 +5,8 @@ import ashton15 from "@/assets/ashton-sports-hall-15.jpg.asset.json";
 import clover47 from "@/assets/clover-IMG-20220228-WA0047.jpg.asset.json";
 import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg.asset.json";
 import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg.asset.json";
+import westvilleGirls from "@/assets/westville-girls-enclosure.jpg.asset.json";
+
 
 export const SITE = {
   name: "KZN Electrical",
