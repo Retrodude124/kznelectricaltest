@@ -17,6 +17,10 @@ import lupa13 from "@/assets/lupa-13.png.asset.json";
 import lupa12 from "@/assets/lupa-12.png.asset.json";
 import lgCornubia1 from "@/assets/lg-cornubia-1.jpg.asset.json";
 import lgCornubia2 from "@/assets/lg-cornubia-2.jpg.asset.json";
+import eden2 from "@/assets/eden-2.jpg.asset.json";
+import eden3 from "@/assets/eden-3.jpg.asset.json";
+import eden4 from "@/assets/eden-4.jpg.asset.json";
+import eden5 from "@/assets/eden-5.jpg.asset.json";
 
 
 
@@ -241,6 +245,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "elaleni-forrest-view": [elaleni10.url, elaleni7.url, elaleni8.url, elaleni9.url],
   "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
   "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
+  "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
 };
 
 
