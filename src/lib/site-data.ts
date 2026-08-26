@@ -11,6 +11,10 @@ import elaleni7 from "@/assets/elaleni-7.png.asset.json";
 import elaleni8 from "@/assets/elaleni-8.png.asset.json";
 import elaleni9 from "@/assets/elaleni-9.png.asset.json";
 import elaleni10 from "@/assets/elaleni-10.png.asset.json";
+import lupa14 from "@/assets/lupa-14.png.asset.json";
+import lupa11 from "@/assets/lupa-11.png.asset.json";
+import lupa13 from "@/assets/lupa-13.png.asset.json";
+import lupa12 from "@/assets/lupa-12.png.asset.json";
 
 
 
@@ -233,6 +237,7 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
   "hirsch": [hirschPlantRoom.url],
   "westville-girls": [westvilleGirls.url],
   "elaleni-forrest-view": [elaleni10.url, elaleni7.url, elaleni8.url, elaleni9.url],
+  "lupa-bakery": [lupa14.url, lupa11.url, lupa13.url, lupa12.url],
 };
 
 
