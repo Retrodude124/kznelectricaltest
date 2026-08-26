@@ -224,7 +224,9 @@ export const PROJECT_PHOTOS: Record<string, string[]> = {
     ashton15.url,
   ],
   "clover-queensburgh": [clover53.url, clover47.url, clover57.url],
+  "westville-girls": [westvilleGirls.url],
 };
+
 
 const CATEGORY_FROM_SECTOR: Record<Project["sector"], ProjectCategory> = {
   Residential: "Domestic",
