@@ -1,61 +1,61 @@
-import ashton2 from "@/assets/ashton-sports-hall-2.jpg.asset.json";
-import ashton8 from "@/assets/ashton-sports-hall-8.jpg.asset.json";
-import ashton13 from "@/assets/ashton-sports-hall-13.jpg.asset.json";
-import ashton15 from "@/assets/ashton-sports-hall-15.jpg.asset.json";
-import clover47 from "@/assets/clover-IMG-20220228-WA0047.jpg.asset.json";
-import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg.asset.json";
-import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg.asset.json";
-import hirschPlantRoom from "@/assets/hirsch-plant-room.jpg.asset.json";
-import westvilleGirls from "@/assets/westville-girls-enclosure.jpg.asset.json";
-import elaleni1 from "@/assets/elaleni-new-1.jpg.asset.json";
-import elaleni2 from "@/assets/elaleni-new-2.jpg.asset.json";
-import elaleni3 from "@/assets/elaleni-new-3.jpg.asset.json";
-import elaleni4 from "@/assets/elaleni-new-4.jpg.asset.json";
-import lupa1 from "@/assets/lupa-new-1.jpg.asset.json";
-import lupa2 from "@/assets/lupa-new-2.jpg.asset.json";
-import lupa3 from "@/assets/lupa-new-3.jpg.asset.json";
-import lupa4 from "@/assets/lupa-new-4.jpg.asset.json";
-import lgCornubia1 from "@/assets/lg-cornubia-1.jpg.asset.json";
-import lgCornubia2 from "@/assets/lg-cornubia-2.jpg.asset.json";
-import eden2 from "@/assets/eden-2.jpg.asset.json";
-import eden3 from "@/assets/eden-3.jpg.asset.json";
-import eden4 from "@/assets/eden-4.jpg.asset.json";
-import eden5 from "@/assets/eden-5.jpg.asset.json";
-import kwadukuza1 from "@/assets/kwadukuza-1.jpg.asset.json";
-import kwadukuza2 from "@/assets/kwadukuza-2.jpg.asset.json";
-import kwadukuza3 from "@/assets/kwadukuza-3.jpg.asset.json";
-import kwadukuza4 from "@/assets/kwadukuza-4.jpg.asset.json";
-import kwadukuza5 from "@/assets/kwadukuza-5.jpg.asset.json";
-import crompton1 from "@/assets/crompton-1.jpg.asset.json";
-import crompton2 from "@/assets/crompton-2.jpg.asset.json";
-import crompton3 from "@/assets/crompton-3.jpg.asset.json";
-import crompton4 from "@/assets/crompton-4.jpg.asset.json";
-import ballito1 from "@/assets/ballito-1.jpg.asset.json";
-import ballito2 from "@/assets/ballito-2.jpg.asset.json";
-import ballito3 from "@/assets/ballito-3.jpg.asset.json";
-import ballito4 from "@/assets/ballito-4.jpg.asset.json";
-import ballito5 from "@/assets/ballito-5.jpg.asset.json";
-import ballito6 from "@/assets/ballito-6.jpg.asset.json";
-import promenade1 from "@/assets/promenade-1.jpg.asset.json";
-import promenade2 from "@/assets/promenade-2.jpg.asset.json";
-import promenade3 from "@/assets/promenade-3.jpg.asset.json";
-import promenade4 from "@/assets/promenade-4.jpg.asset.json";
-import promenade5 from "@/assets/promenade-5.jpg.asset.json";
-import promenade6 from "@/assets/promenade-6.jpg.asset.json";
-import netcare1 from "@/assets/netcare-1.jpg.asset.json";
-import netcare2 from "@/assets/netcare-2.jpg.asset.json";
-import netcare3 from "@/assets/netcare-3.jpg.asset.json";
-import netcare4 from "@/assets/netcare-4.jpg.asset.json";
-import netcare5 from "@/assets/netcare-5.jpg.asset.json";
-import netcare6 from "@/assets/netcare-6.jpg.asset.json";
-import netcare7 from "@/assets/netcare-7.jpg.asset.json";
-import pnpHill1 from "@/assets/pnp-hillcrest-1.jpg.asset.json";
-import pnpHill2 from "@/assets/pnp-hillcrest-2.jpg.asset.json";
-import pnpHill3 from "@/assets/pnp-hillcrest-3.jpg.asset.json";
-import pnpHill4 from "@/assets/pnp-hillcrest-4.jpg.asset.json";
-import pnpHill5 from "@/assets/pnp-hillcrest-5.jpg.asset.json";
-import massbuild1 from "@/assets/massbuild-builders-trade-depot-1.jpg.asset.json";
-import massbuild2 from "@/assets/massbuild-builders-trade-depot-2.jpg.asset.json";
+import ashton2 from "@/assets/ashton-sports-hall-2.jpg";
+import ashton8 from "@/assets/ashton-sports-hall-8.jpg";
+import ashton13 from "@/assets/ashton-sports-hall-13.jpg";
+import ashton15 from "@/assets/ashton-sports-hall-15.jpg";
+import clover47 from "@/assets/clover-IMG-20220228-WA0047.jpg";
+import clover53 from "@/assets/clover-IMG-20220228-WA0053.jpg";
+import clover57 from "@/assets/clover-IMG-20220228-WA0057.jpg";
+import hirschPlantRoom from "@/assets/hirsch-plant-room.jpg";
+import westvilleGirls from "@/assets/westville-girls-enclosure.jpg";
+import elaleni1 from "@/assets/elaleni-new-1.jpg";
+import elaleni2 from "@/assets/elaleni-new-2.jpg";
+import elaleni3 from "@/assets/elaleni-new-3.jpg";
+import elaleni4 from "@/assets/elaleni-new-4.jpg";
+import lupa1 from "@/assets/lupa-new-1.jpg";
+import lupa2 from "@/assets/lupa-new-2.jpg";
+import lupa3 from "@/assets/lupa-new-3.jpg";
+import lupa4 from "@/assets/lupa-new-4.jpg";
+import lgCornubia1 from "@/assets/lg-cornubia-1.jpg";
+import lgCornubia2 from "@/assets/lg-cornubia-2.jpg";
+import eden2 from "@/assets/eden-2.jpg";
+import eden3 from "@/assets/eden-3.jpg";
+import eden4 from "@/assets/eden-4.jpg";
+import eden5 from "@/assets/eden-5.jpg";
+import kwadukuza1 from "@/assets/kwadukuza-1.jpg";
+import kwadukuza2 from "@/assets/kwadukuza-2.jpg";
+import kwadukuza3 from "@/assets/kwadukuza-3.jpg";
+import kwadukuza4 from "@/assets/kwadukuza-4.jpg";
+import kwadukuza5 from "@/assets/kwadukuza-5.jpg";
+import crompton1 from "@/assets/crompton-1.jpg";
+import crompton2 from "@/assets/crompton-2.jpg";
+import crompton3 from "@/assets/crompton-3.jpg";
+import crompton4 from "@/assets/crompton-4.jpg";
+import ballito1 from "@/assets/ballito-1.jpg";
+import ballito2 from "@/assets/ballito-2.jpg";
+import ballito3 from "@/assets/ballito-3.jpg";
+import ballito4 from "@/assets/ballito-4.jpg";
+import ballito5 from "@/assets/ballito-5.jpg";
+import ballito6 from "@/assets/ballito-6.jpg";
+import promenade1 from "@/assets/promenade-1.jpg";
+import promenade2 from "@/assets/promenade-2.jpg";
+import promenade3 from "@/assets/promenade-3.jpg";
+import promenade4 from "@/assets/promenade-4.jpg";
+import promenade5 from "@/assets/promenade-5.jpg";
+import promenade6 from "@/assets/promenade-6.jpg";
+import netcare1 from "@/assets/netcare-1.jpg";
+import netcare2 from "@/assets/netcare-2.jpg";
+import netcare3 from "@/assets/netcare-3.jpg";
+import netcare4 from "@/assets/netcare-4.jpg";
+import netcare5 from "@/assets/netcare-5.jpg";
+import netcare6 from "@/assets/netcare-6.jpg";
+import netcare7 from "@/assets/netcare-7.jpg";
+import pnpHill1 from "@/assets/pnp-hillcrest-1.jpg";
+import pnpHill2 from "@/assets/pnp-hillcrest-2.jpg";
+import pnpHill3 from "@/assets/pnp-hillcrest-3.jpg";
+import pnpHill4 from "@/assets/pnp-hillcrest-4.jpg";
+import pnpHill5 from "@/assets/pnp-hillcrest-5.jpg";
+import massbuild1 from "@/assets/massbuild-builders-trade-depot-1.jpg";
+import massbuild2 from "@/assets/massbuild-builders-trade-depot-2.jpg";
 
 
 
@@ -270,25 +270,25 @@ const slugify = (s: string) =>
  */
 export const PROJECT_PHOTOS: Record<string, string[]> = {
   "ashton-new-sports-hall": [
-    ashton2.url,
-    ashton13.url,
-    ashton8.url,
-    ashton15.url,
+    ashton2,
+    ashton13,
+    ashton8,
+    ashton15,
   ],
-  "clover-queensburgh": [clover53.url, clover47.url, clover57.url],
-  "hirsch": [hirschPlantRoom.url],
-  "westville-girls": [westvilleGirls.url],
-  "elaleni-forrest-view": [elaleni1.url, elaleni2.url, elaleni3.url, elaleni4.url],
-  "lupa-bakery": [lupa2.url, lupa1.url, lupa3.url, lupa4.url],
-  "lg-cornubia": [lgCornubia1.url, lgCornubia2.url],
-  "eden-garden-private-hospital": [eden5.url, eden4.url, eden2.url, eden3.url],
-  "pick-n-pay-christian-village-hillcrest": [pnpHill4.url, pnpHill5.url, pnpHill3.url, pnpHill1.url, pnpHill2.url],
-  "netcare-st-augustine-s-hospital": [netcare6.url, netcare3.url, netcare1.url, netcare7.url, netcare2.url, netcare4.url, netcare5.url],
-  "durban-point-promenade": [promenade5.url, promenade6.url, promenade1.url, promenade2.url, promenade3.url, promenade4.url],
-  "ballito-lifestyle-centre-re-development": [ballito2.url, ballito3.url, ballito1.url, ballito4.url, ballito6.url, ballito5.url],
-  "life-the-crompton-hospital": [crompton4.url, crompton3.url, crompton1.url, crompton2.url],
-  "kwadukuza-private-hospital": [kwadukuza1.url, kwadukuza3.url, kwadukuza2.url, kwadukuza5.url, kwadukuza4.url],
-  "massbuild-builders-trade-depot": [massbuild1.url, massbuild2.url],
+  "clover-queensburgh": [clover53, clover47, clover57],
+  "hirsch": [hirschPlantRoom],
+  "westville-girls": [westvilleGirls],
+  "elaleni-forrest-view": [elaleni1, elaleni2, elaleni3, elaleni4],
+  "lupa-bakery": [lupa2, lupa1, lupa3, lupa4],
+  "lg-cornubia": [lgCornubia1, lgCornubia2],
+  "eden-garden-private-hospital": [eden5, eden4, eden2, eden3],
+  "pick-n-pay-christian-village-hillcrest": [pnpHill4, pnpHill5, pnpHill3, pnpHill1, pnpHill2],
+  "netcare-st-augustine-s-hospital": [netcare6, netcare3, netcare1, netcare7, netcare2, netcare4, netcare5],
+  "durban-point-promenade": [promenade5, promenade6, promenade1, promenade2, promenade3, promenade4],
+  "ballito-lifestyle-centre-re-development": [ballito2, ballito3, ballito1, ballito4, ballito6, ballito5],
+  "life-the-crompton-hospital": [crompton4, crompton3, crompton1, crompton2],
+  "kwadukuza-private-hospital": [kwadukuza1, kwadukuza3, kwadukuza2, kwadukuza5, kwadukuza4],
+  "massbuild-builders-trade-depot": [massbuild1, massbuild2],
 };
 
 

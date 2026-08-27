@@ -5,9 +5,9 @@ import { Counter } from "@/components/site/Counter";
 import { PageHero } from "@/components/site/PageHero";
 import { SITE } from "@/lib/site-data";
 import { Award, Users, Target, ShieldCheck } from "lucide-react";
-import fleetAsset from "@/assets/fleet-aerial.jpg.asset.json";
-import anniversaryAsset from "@/assets/anniversary-25.jpg.asset.json";
-import giftboxAsset from "@/assets/branded-giftbox.jpg.asset.json";
+import fleetAsset from "@/assets/fleet-aerial.jpg";
+import anniversaryAsset from "@/assets/anniversary-25.jpg";
+import giftboxAsset from "@/assets/branded-giftbox.jpg";
 
 export const Route = createFileRoute("/about")({
   component: About,
@@ -18,8 +18,6 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About KZN Electrical" },
       { property: "og:description", content: "Established 1997. ECA & ECB registered. Master Installation Electricians serving KwaZulu-Natal." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: fleetAsset.url },
-      { name: "twitter:image", content: fleetAsset.url },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
@@ -75,7 +73,7 @@ function About() {
                 className="relative rounded-2xl overflow-hidden border border-border shadow-elegant"
               >
                 <img
-                  src={fleetAsset.url}
+                  src={fleetAsset}
                   alt="Aerial photograph of the KwaZulu-Natal Electrical branded vehicle fleet lined up on a field with team members"
                   loading="lazy"
                   className="w-full aspect-[4/3] object-cover"
@@ -92,7 +90,7 @@ function About() {
                   className="relative rounded-2xl overflow-hidden border border-border shadow-elegant -translate-y-4"
                 >
                   <img
-                    src={anniversaryAsset.url}
+                    src={anniversaryAsset}
                     alt="25 Years anniversary emblem 1997–2022 on a KwaZulu-Natal Electrical company vehicle"
                     loading="lazy"
                     className="w-full aspect-square object-cover bg-white"
@@ -114,7 +112,7 @@ function About() {
                   className="relative rounded-2xl overflow-hidden border border-border shadow-elegant translate-y-4"
                 >
                   <img
-                    src={giftboxAsset.url}
+                    src={giftboxAsset}
                     alt="Custom laser-cut wooden KwaZulu-Natal Electrical branded gift boxes showing attention to brand detail"
                     loading="lazy"
                     className="w-full aspect-square object-cover"
