@@ -2,11 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Shield, Award, Clock, ChevronDown } from "lucide-react";
 import heroImg from "@/assets/hero-city.jpg";
-import fleetAsset from "@/assets/fleet-aerial.jpg.asset.json";
-import anniversaryVehicle from "@/assets/anniversary-vehicle.jpg.asset.json";
-import teamVehicles from "@/assets/team-vehicles.jpg.asset.json";
-import teamGazebo from "@/assets/team-gazebo.jpg.asset.json";
-import anniversaryBoard from "@/assets/anniversary-board.jpg.asset.json";
+import fleetAsset from "@/assets/fleet-aerial.jpg";
+import anniversaryVehicle from "@/assets/anniversary-vehicle.jpg";
+import teamVehicles from "@/assets/team-vehicles.jpg";
+import teamGazebo from "@/assets/team-gazebo.jpg";
+import anniversaryBoard from "@/assets/anniversary-board.jpg";
 import { SERVICES, PROJECTS, SITE } from "@/lib/site-data";
 import { Reveal, Stagger, itemVariants } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
@@ -120,7 +120,7 @@ function Home() {
         <Reveal>
           <div className="relative h-[42vh] min-h-[340px] max-h-[560px] overflow-hidden border-y border-border">
             <img
-              src={fleetAsset.url}
+              src={fleetAsset}
               alt="Aerial view of the KwaZulu-Natal Electrical branded vehicle fleet and team"
               loading="lazy"
               className="absolute inset-0 size-full object-cover"
@@ -173,7 +173,7 @@ function Home() {
               className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border"
             >
               <img
-                src={anniversaryVehicle.url}
+                src={anniversaryVehicle}
                 alt="25 Years 1997–2022 anniversary emblem on a KwaZulu Natal Electrical company vehicle"
                 loading="lazy"
                 className="w-full aspect-[4/3] object-cover bg-white"
@@ -226,7 +226,7 @@ function Home() {
             className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border"
           >
             <img
-              src={teamVehicles.url}
+              src={teamVehicles}
               alt="KwaZulu Natal Electrical team members in branded workwear standing beside a line of company bakkies"
               loading="lazy"
               className="w-full aspect-[16/8] object-cover"
@@ -279,7 +279,7 @@ function Home() {
               className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border"
             >
               <img
-                src={teamGazebo.url}
+                src={teamGazebo}
                 alt="The full KwaZulu Natal Electrical team gathered under the branded 25 year anniversary gazebo"
                 loading="lazy"
                 className="w-full aspect-[4/3] object-cover"
@@ -318,7 +318,7 @@ function Home() {
                 className="relative rounded-[18px] overflow-hidden shadow-elegant border border-border bg-white"
               >
                 <img
-                  src={anniversaryBoard.url}
+                  src={anniversaryBoard}
                   alt="Close-up of the KwaZulu Natal Electrical 25 year anniversary board signed by customers, suppliers and partners"
                   loading="lazy"
                   className="w-full aspect-[4/3] object-cover"
