@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiServerTestRouteImport } from './routes/api/server-test'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
@@ -48,6 +49,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiServerTestRoute = ApiServerTestRouteImport.update({
+  id: '/api/server-test',
+  path: '/api/server-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/server-test': typeof ApiServerTestRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/server-test': typeof ApiServerTestRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/server-test': typeof ApiServerTestRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/quote'
     | '/sitemap.xml'
+    | '/api/server-test'
     | '/services/$slug'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/quote'
     | '/sitemap.xml'
+    | '/api/server-test'
     | '/services/$slug'
     | '/services'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/quote'
     | '/sitemap.xml'
+    | '/api/server-test'
     | '/services/$slug'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   QuoteRoute: typeof QuoteRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiServerTestRoute: typeof ApiServerTestRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/server-test': {
+      id: '/api/server-test'
+      path: '/api/server-test'
+      fullPath: '/api/server-test'
+      preLoaderRoute: typeof ApiServerTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/': {
       id: '/services/'
       path: '/services'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   QuoteRoute: QuoteRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiServerTestRoute: ApiServerTestRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
