@@ -3,7 +3,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";
 import { Phone, Mail, MapPin, Printer } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
+import { sendEnquiry, ENQUIRY_SUCCESS } from "@/lib/send-enquiry";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -20,7 +21,39 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const [state, handleSubmit] = useForm("xaqkrdgo");
+  const [enquiryType, setEnquiryType] = useState<"account" | "tender">("account");
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", message: "" });
+  const [hp, setHp] = useState("");
+  const [sending, setSending] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const set = (k: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (sending) return;
+    setError(null);
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("Please fill in your name, email and enquiry.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setSending(true);
+    try {
+      await sendEnquiry(enquiryType, form, hp);
+      setSucceeded(true);
+      setForm({ name: "", company: "", email: "", phone: "", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <>
       <PageHero eyebrow="Get in touch" title="Contact" subtitle="Reach our team for queries, quotes, accounts, tenders or our full list of client referrals." />
@@ -85,25 +118,27 @@ function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          {state.succeeded ? (
+          {succeeded ? (
             <div className="p-8 rounded-xl bg-surface border border-border text-center">
               <h3 className="text-2xl font-display font-bold">Thanks — we'll be in touch</h3>
-              <p className="mt-3 text-muted-foreground">Your enquiry has been sent. Our team responds within one working day.</p>
+              <p className="mt-3 text-muted-foreground">{ENQUIRY_SUCCESS}</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="p-8 rounded-xl bg-surface border border-border space-y-5">
+            <form onSubmit={onSubmit} noValidate className="p-8 rounded-xl bg-surface border border-border space-y-5">
               <h3 className="text-2xl font-display font-bold">Send an enquiry</h3>
               <div className="flex gap-4 text-sm">
-                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Account" defaultChecked className="accent-electric" /> Account Enquiry</label>
-                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Tender" className="accent-electric" /> Tender Enquiry</label>
+                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Account" checked={enquiryType === "account"} onChange={() => setEnquiryType("account")} className="accent-electric" /> Account Enquiry</label>
+                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Tender" checked={enquiryType === "tender"} onChange={() => setEnquiryType("tender")} className="accent-electric" /> Tender Enquiry</label>
               </div>
-              <Field label="Full name" name="name" />
-              <Field label="Email" name="email" type="email" />
-              <ValidationError prefix="Email" field="email" errors={state.errors} className="text-xs text-red-400" />
-              <Field label="Enquiry" name="message" textarea />
-              <ValidationError prefix="Message" field="message" errors={state.errors} className="text-xs text-red-400" />
-              <button type="submit" disabled={state.submitting} className="w-full px-5 py-3 rounded-md bg-electric text-background font-semibold hover:shadow-glow transition disabled:opacity-60">
-                {state.submitting ? "Sending…" : "Send enquiry"}
+              <Field label="Full name" name="name" value={form.name} onChange={set("name")} />
+              <Field label="Company (optional)" name="company" required={false} value={form.company} onChange={set("company")} />
+              <Field label="Email" name="email" type="email" value={form.email} onChange={set("email")} />
+              <Field label="Phone (optional)" name="phone" required={false} value={form.phone} onChange={set("phone")} />
+              <Field label="Enquiry" name="message" textarea value={form.message} onChange={set("message")} />
+              <input type="text" name="_hp" value={hp} onChange={(e) => setHp(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+              {error && <p className="text-sm text-red-400">{error}</p>}
+              <button type="submit" disabled={sending} className="w-full px-5 py-3 rounded-md bg-electric text-background font-semibold hover:shadow-glow transition disabled:opacity-60">
+                {sending ? "Sending…" : "Send enquiry"}
               </button>
             </form>
           )}
@@ -113,15 +148,15 @@ function Contact() {
   );
 }
 
-function Field({ label, name, type = "text", textarea }: { label: string; name: string; type?: string; textarea?: boolean }) {
+function Field({ label, name, type = "text", textarea, value, onChange, required = true }: { label: string; name: string; type?: string; textarea?: boolean; value: string; onChange: (v: string) => void; required?: boolean }) {
   const cls = "w-full bg-background border border-border rounded-md px-4 py-3 text-sm focus:outline-none focus:border-electric transition";
   return (
     <label className="block">
       <span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>
       {textarea ? (
-        <textarea name={name} required rows={5} className={cls + " mt-2"} />
+        <textarea name={name} required={required} rows={5} value={value} onChange={(e) => onChange(e.target.value)} className={cls + " mt-2"} />
       ) : (
-        <input id={name} name={name} type={type} required className={cls + " mt-2"} />
+        <input id={name} name={name} type={type} required={required} value={value} onChange={(e) => onChange(e.target.value)} className={cls + " mt-2"} />
       )}
     </label>
   );

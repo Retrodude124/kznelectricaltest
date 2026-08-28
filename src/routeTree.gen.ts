@@ -15,9 +15,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ApiServerTestRouteImport } from './routes/api/server-test'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ApiPublicEnquiriesRouteImport } from './routes/api/public/enquiries'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -49,11 +49,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiServerTestRoute = ApiServerTestRouteImport.update({
-  id: '/api/server-test',
-  path: '/api/server-test',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
@@ -64,6 +59,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicEnquiriesRoute = ApiPublicEnquiriesRouteImport.update({
+  id: '/api/public/enquiries',
+  path: '/api/public/enquiries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,9 +72,9 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/api/server-test': typeof ApiServerTestRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,9 +83,9 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/api/server-test': typeof ApiServerTestRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
+  '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,9 +95,9 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/api/server-test': typeof ApiServerTestRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/enquiries': typeof ApiPublicEnquiriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -108,9 +108,9 @@ export interface FileRouteTypes {
     | '/projects'
     | '/quote'
     | '/sitemap.xml'
-    | '/api/server-test'
     | '/services/$slug'
     | '/services/'
+    | '/api/public/enquiries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -119,9 +119,9 @@ export interface FileRouteTypes {
     | '/projects'
     | '/quote'
     | '/sitemap.xml'
-    | '/api/server-test'
     | '/services/$slug'
     | '/services'
+    | '/api/public/enquiries'
   id:
     | '__root__'
     | '/'
@@ -130,9 +130,9 @@ export interface FileRouteTypes {
     | '/projects'
     | '/quote'
     | '/sitemap.xml'
-    | '/api/server-test'
     | '/services/$slug'
     | '/services/'
+    | '/api/public/enquiries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -142,9 +142,9 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   QuoteRoute: typeof QuoteRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ApiServerTestRoute: typeof ApiServerTestRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ApiPublicEnquiriesRoute: typeof ApiPublicEnquiriesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -191,13 +191,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/server-test': {
-      id: '/api/server-test'
-      path: '/api/server-test'
-      fullPath: '/api/server-test'
-      preLoaderRoute: typeof ApiServerTestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/': {
       id: '/services/'
       path: '/services'
@@ -212,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/enquiries': {
+      id: '/api/public/enquiries'
+      path: '/api/public/enquiries'
+      fullPath: '/api/public/enquiries'
+      preLoaderRoute: typeof ApiPublicEnquiriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -222,9 +222,9 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   QuoteRoute: QuoteRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ApiServerTestRoute: ApiServerTestRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ApiPublicEnquiriesRoute: ApiPublicEnquiriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

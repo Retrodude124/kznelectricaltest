@@ -4,7 +4,7 @@ import { SERVICES } from "@/lib/site-data";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { useForm } from "@formspree/react";
+import { sendEnquiry, ENQUIRY_SUCCESS } from "@/lib/send-enquiry";
 
 export const Route = createFileRoute("/quote")({
   component: Quote,
@@ -24,13 +24,41 @@ const STEPS = ["Your details", "Service", "Project", "Review"];
 
 function Quote() {
   const [step, setStep] = useState(0);
-  const [state, submitToFormspree] = useForm("xaqkrdgo");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: SERVICES[0].slug, propertyType: "Residential", urgency: "Standard", details: "" });
+  const [sending, setSending] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const emptyForm = { name: "", company: "", email: "", phone: "", service: SERVICES[0].slug, propertyType: "Residential", urgency: "Standard", details: "" };
+  const [form, setForm] = useState(emptyForm);
+  const [hp, setHp] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
 
   const next = () => setStep((s) => Math.min(s + 1, STEPS.length - 1));
   const back = () => setStep((s) => Math.max(s - 1, 0));
-  const submit = () => submitToFormspree({ ...form, _subject: `Quote request from ${form.name}` });
-  const done = state.succeeded;
+
+  const submit = async () => {
+    if (sending) return;
+    setError(null);
+    if (!form.name.trim() || !form.email.trim()) {
+      setError("Please go back and provide your name and email address.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+      setError("Please go back and enter a valid email address.");
+      return;
+    }
+    setSending(true);
+    try {
+      const serviceTitle = SERVICES.find((s) => s.slug === form.service)?.title ?? form.service;
+      await sendEnquiry("quote", { ...form, service: serviceTitle }, hp);
+      setSubmittedName(form.name);
+      setForm(emptyForm);
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <>
@@ -53,14 +81,16 @@ function Quote() {
               <motion.div key="done" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
                 <div className="size-16 rounded-full bg-electric/10 border border-electric/30 text-electric flex items-center justify-center mx-auto"><Check className="size-8" /></div>
                 <h3 className="mt-6 text-2xl font-display font-bold">Quote request received</h3>
-                <p className="mt-3 text-muted-foreground">Thanks {form.name || "—"}. We'll be in touch within one working day.</p>
+                <p className="mt-3 text-muted-foreground">Thanks {submittedName || "—"}. {ENQUIRY_SUCCESS}</p>
               </motion.div>
             ) : (
               <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="space-y-5">
                 {step === 0 && <>
                   <Input label="Full name" v={form.name} on={(v) => setForm({ ...form, name: v })} />
+                  <Input label="Company (optional)" v={form.company} on={(v) => setForm({ ...form, company: v })} />
                   <Input label="Email" type="email" v={form.email} on={(v) => setForm({ ...form, email: v })} />
                   <Input label="Phone" v={form.phone} on={(v) => setForm({ ...form, phone: v })} />
+                  <input type="text" value={hp} onChange={(e) => setHp(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                 </>}
                 {step === 1 && <>
                   <label className="block">
@@ -108,6 +138,8 @@ function Quote() {
           </AnimatePresence>
         </div>
 
+        {!done && error && <p className="mt-4 text-sm text-red-400">{error}</p>}
+
         {!done && (
           <div className="mt-6 flex justify-between gap-3">
             <button onClick={back} disabled={step === 0} className="px-5 py-3 rounded-md border border-border disabled:opacity-30 inline-flex items-center gap-2">
@@ -118,8 +150,8 @@ function Quote() {
                 Continue <ArrowRight className="size-4" />
               </button>
             ) : (
-              <button onClick={submit} disabled={state.submitting} className="px-6 py-3 rounded-md bg-electric text-background font-semibold inline-flex items-center gap-2 hover:shadow-glow transition disabled:opacity-60">
-                {state.submitting ? "Sending…" : "Submit quote request"} <Check className="size-4" />
+              <button onClick={submit} disabled={sending} className="px-6 py-3 rounded-md bg-electric text-background font-semibold inline-flex items-center gap-2 hover:shadow-glow transition disabled:opacity-60">
+                {sending ? "Sending…" : "Submit quote request"} <Check className="size-4" />
               </button>
             )}
           </div>
