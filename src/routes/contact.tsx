@@ -118,25 +118,27 @@ function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          {state.succeeded ? (
+          {succeeded ? (
             <div className="p-8 rounded-xl bg-surface border border-border text-center">
               <h3 className="text-2xl font-display font-bold">Thanks — we'll be in touch</h3>
-              <p className="mt-3 text-muted-foreground">Your enquiry has been sent. Our team responds within one working day.</p>
+              <p className="mt-3 text-muted-foreground">{ENQUIRY_SUCCESS}</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="p-8 rounded-xl bg-surface border border-border space-y-5">
+            <form onSubmit={onSubmit} noValidate className="p-8 rounded-xl bg-surface border border-border space-y-5">
               <h3 className="text-2xl font-display font-bold">Send an enquiry</h3>
               <div className="flex gap-4 text-sm">
-                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Account" defaultChecked className="accent-electric" /> Account Enquiry</label>
-                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Tender" className="accent-electric" /> Tender Enquiry</label>
+                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Account" checked={enquiryType === "account"} onChange={() => setEnquiryType("account")} className="accent-electric" /> Account Enquiry</label>
+                <label className="flex items-center gap-2"><input type="radio" name="enquiryType" value="Tender" checked={enquiryType === "tender"} onChange={() => setEnquiryType("tender")} className="accent-electric" /> Tender Enquiry</label>
               </div>
-              <Field label="Full name" name="name" />
-              <Field label="Email" name="email" type="email" />
-              <ValidationError prefix="Email" field="email" errors={state.errors} className="text-xs text-red-400" />
-              <Field label="Enquiry" name="message" textarea />
-              <ValidationError prefix="Message" field="message" errors={state.errors} className="text-xs text-red-400" />
-              <button type="submit" disabled={state.submitting} className="w-full px-5 py-3 rounded-md bg-electric text-background font-semibold hover:shadow-glow transition disabled:opacity-60">
-                {state.submitting ? "Sending…" : "Send enquiry"}
+              <Field label="Full name" name="name" value={form.name} onChange={set("name")} />
+              <Field label="Company (optional)" name="company" required={false} value={form.company} onChange={set("company")} />
+              <Field label="Email" name="email" type="email" value={form.email} onChange={set("email")} />
+              <Field label="Phone (optional)" name="phone" required={false} value={form.phone} onChange={set("phone")} />
+              <Field label="Enquiry" name="message" textarea value={form.message} onChange={set("message")} />
+              <input type="text" name="_hp" value={hp} onChange={(e) => setHp(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+              {error && <p className="text-sm text-red-400">{error}</p>}
+              <button type="submit" disabled={sending} className="w-full px-5 py-3 rounded-md bg-electric text-background font-semibold hover:shadow-glow transition disabled:opacity-60">
+                {sending ? "Sending…" : "Send enquiry"}
               </button>
             </form>
           )}
