@@ -148,15 +148,15 @@ function Contact() {
   );
 }
 
-function Field({ label, name, type = "text", textarea }: { label: string; name: string; type?: string; textarea?: boolean }) {
+function Field({ label, name, type = "text", textarea, value, onChange, required = true }: { label: string; name: string; type?: string; textarea?: boolean; value: string; onChange: (v: string) => void; required?: boolean }) {
   const cls = "w-full bg-background border border-border rounded-md px-4 py-3 text-sm focus:outline-none focus:border-electric transition";
   return (
     <label className="block">
       <span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>
       {textarea ? (
-        <textarea name={name} required rows={5} className={cls + " mt-2"} />
+        <textarea name={name} required={required} rows={5} value={value} onChange={(e) => onChange(e.target.value)} className={cls + " mt-2"} />
       ) : (
-        <input id={name} name={name} type={type} required className={cls + " mt-2"} />
+        <input id={name} name={name} type={type} required={required} value={value} onChange={(e) => onChange(e.target.value)} className={cls + " mt-2"} />
       )}
     </label>
   );
