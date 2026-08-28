@@ -21,7 +21,39 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const [state, handleSubmit] = useForm("xaqkrdgo");
+  const [enquiryType, setEnquiryType] = useState<"account" | "tender">("account");
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", message: "" });
+  const [hp, setHp] = useState("");
+  const [sending, setSending] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const set = (k: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (sending) return;
+    setError(null);
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("Please fill in your name, email and enquiry.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    setSending(true);
+    try {
+      await sendEnquiry(enquiryType, form, hp);
+      setSucceeded(true);
+      setForm({ name: "", company: "", email: "", phone: "", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <>
       <PageHero eyebrow="Get in touch" title="Contact" subtitle="Reach our team for queries, quotes, accounts, tenders or our full list of client referrals." />
