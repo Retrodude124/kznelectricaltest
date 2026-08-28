@@ -138,6 +138,8 @@ function Quote() {
           </AnimatePresence>
         </div>
 
+        {!done && error && <p className="mt-4 text-sm text-red-400">{error}</p>}
+
         {!done && (
           <div className="mt-6 flex justify-between gap-3">
             <button onClick={back} disabled={step === 0} className="px-5 py-3 rounded-md border border-border disabled:opacity-30 inline-flex items-center gap-2">
@@ -148,8 +150,8 @@ function Quote() {
                 Continue <ArrowRight className="size-4" />
               </button>
             ) : (
-              <button onClick={submit} disabled={state.submitting} className="px-6 py-3 rounded-md bg-electric text-background font-semibold inline-flex items-center gap-2 hover:shadow-glow transition disabled:opacity-60">
-                {state.submitting ? "Sending…" : "Submit quote request"} <Check className="size-4" />
+              <button onClick={submit} disabled={sending} className="px-6 py-3 rounded-md bg-electric text-background font-semibold inline-flex items-center gap-2 hover:shadow-glow transition disabled:opacity-60">
+                {sending ? "Sending…" : "Submit quote request"} <Check className="size-4" />
               </button>
             )}
           </div>
