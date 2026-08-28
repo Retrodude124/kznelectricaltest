@@ -81,14 +81,16 @@ function Quote() {
               <motion.div key="done" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
                 <div className="size-16 rounded-full bg-electric/10 border border-electric/30 text-electric flex items-center justify-center mx-auto"><Check className="size-8" /></div>
                 <h3 className="mt-6 text-2xl font-display font-bold">Quote request received</h3>
-                <p className="mt-3 text-muted-foreground">Thanks {form.name || "—"}. We'll be in touch within one working day.</p>
+                <p className="mt-3 text-muted-foreground">Thanks {submittedName || "—"}. {ENQUIRY_SUCCESS}</p>
               </motion.div>
             ) : (
               <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="space-y-5">
                 {step === 0 && <>
                   <Input label="Full name" v={form.name} on={(v) => setForm({ ...form, name: v })} />
+                  <Input label="Company (optional)" v={form.company} on={(v) => setForm({ ...form, company: v })} />
                   <Input label="Email" type="email" v={form.email} on={(v) => setForm({ ...form, email: v })} />
                   <Input label="Phone" v={form.phone} on={(v) => setForm({ ...form, phone: v })} />
+                  <input type="text" value={hp} onChange={(e) => setHp(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                 </>}
                 {step === 1 && <>
                   <label className="block">
