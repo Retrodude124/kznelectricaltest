@@ -4,7 +4,7 @@ import { SERVICES } from "@/lib/site-data";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { useForm } from "@formspree/react";
+import { sendEnquiry, ENQUIRY_SUCCESS } from "@/lib/send-enquiry";
 
 export const Route = createFileRoute("/quote")({
   component: Quote,
@@ -24,13 +24,41 @@ const STEPS = ["Your details", "Service", "Project", "Review"];
 
 function Quote() {
   const [step, setStep] = useState(0);
-  const [state, submitToFormspree] = useForm("xaqkrdgo");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: SERVICES[0].slug, propertyType: "Residential", urgency: "Standard", details: "" });
+  const [sending, setSending] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const emptyForm = { name: "", company: "", email: "", phone: "", service: SERVICES[0].slug, propertyType: "Residential", urgency: "Standard", details: "" };
+  const [form, setForm] = useState(emptyForm);
+  const [hp, setHp] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
 
   const next = () => setStep((s) => Math.min(s + 1, STEPS.length - 1));
   const back = () => setStep((s) => Math.max(s - 1, 0));
-  const submit = () => submitToFormspree({ ...form, _subject: `Quote request from ${form.name}` });
-  const done = state.succeeded;
+
+  const submit = async () => {
+    if (sending) return;
+    setError(null);
+    if (!form.name.trim() || !form.email.trim()) {
+      setError("Please go back and provide your name and email address.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+      setError("Please go back and enter a valid email address.");
+      return;
+    }
+    setSending(true);
+    try {
+      const serviceTitle = SERVICES.find((s) => s.slug === form.service)?.title ?? form.service;
+      await sendEnquiry("quote", { ...form, service: serviceTitle }, hp);
+      setSubmittedName(form.name);
+      setForm(emptyForm);
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <>
