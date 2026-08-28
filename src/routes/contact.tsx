@@ -3,7 +3,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";
 import { Phone, Mail, MapPin, Printer } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
+import { sendEnquiry, ENQUIRY_SUCCESS } from "@/lib/send-enquiry";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
